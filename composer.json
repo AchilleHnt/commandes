@@ -1,0 +1,17 @@
+{
+    "name": "php/cmd-api",
+    "description": "Mini Système de Gestion de Commandes",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "CmdApi\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "AchilleHnt",
+            "email": "achillehoun570@gmail.com"
+        }
+    ],
+    "require": {}
+}
