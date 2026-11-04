@@ -1,0 +1,9 @@
+RewriteEngine On
+
+# Si le fichier ou le dossier existe physiquement, on l'affiche directement sans passer par PHP
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# Sinon, on envoie tout le reste vers le routeur PHP
+RewriteRule ^(.*)$ index.php [QSA,L]

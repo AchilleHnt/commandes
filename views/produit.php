@@ -1,42 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Liste des Produits</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-     <h2>La liste des Produits</h2>
+    <div class="container">
+        <div class="nav-header">
+            <h2>Liste des Produits</h2>
+            <a href="/" class="btn-back">← Retour au menu</a>
+        </div>
 
-     <table border="1">
-        <thead>
-            <tr>
-                <th>Id De Produit</th>
-                <th>Nom</th>
-                <th>Stock</th>
-                <th>Prix</th>
-            </tr>
-            
-        </thead>
-
-        <tbody>
-            
-            <?php foreach($all as $c) :?>
-                <?php $id = $c['id']?>
+        <table>
+            <thead>
                 <tr>
-                    <td><?= $c['id']?></td>
-                    <td><?= $c['nom']?></td>
-                    <td><?= $c['stock']?></td>
-                    <td><?= $c['prix']?></td>
-                    <!-- <td>
-                       <?php echo "<a href='/valider?id=$id'>Valider</a>"; ?>
-                        <?php echo "<a href='/annuler?id=$id'>Annuler</a>"; ?>
-
-                    </td> -->
+                    <th>ID Produit</th>
+                    <th>Nom</th>
+                    <th>Stock</th>
+                    <th>Prix</th>
                 </tr>
-            <?php endforeach ?>
-            
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                <?php foreach($all as $c) :?>
+                    <tr>
+                        <td><strong>#<?= htmlspecialchars($c['id']) ?></strong></td>
+                        <td><?= htmlspecialchars($c['nom']) ?></td>
+                        <td><?= htmlspecialchars($c['stock']) ?></td>
+                        <td><?= htmlspecialchars($c['prix']) ?> FCFA</td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>

@@ -17,6 +17,7 @@ define('BASE_VIEW_PATH' , dirname(__DIR__). DIRECTORY_SEPARATOR. 'views'.
 DIRECTORY_SEPARATOR);
 
 $r = new Router();
+$r->register('/',["CmdApi\Controller\HomeController","home"]);
 $r->register('/produits',["CmdApi\Controller\ProduitController","lister"]);
 
 $r->register('/commandes',["CmdApi\Controller\CommandeController","lister"]);

@@ -1,43 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Liste des Commandes</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h2>La liste des Commandes</h2>
-    <table border="1">
-        <thead>
-            <tr>
-                <th>Id De Commande</th>
-                <th>Id De Produit</th>
-                <th>Quantité</th>
-                <th>Statut</th>
-                <th>Actions</th>
-            </tr>
-            
-        </thead>
+    <div class="container">
+        <div class="nav-header">
+            <h2>Liste des Commandes</h2>
+            <a href="/" class="btn-back">← Retour au menu</a>
+        </div>
 
-        <tbody>
-            
-            <?php foreach($all as $c) :?>
-                <?php $id = $c['id']?>
+        <table>
+            <thead>
                 <tr>
-                    <td><?= $c['id']?></td>
-                    <td><?= $c['produit_id']?></td>
-                    <td><?= $c['quantite']?></td>
-                    <td><?= $c['statut']?></td>
-                    <td>
-                       <?php echo "<a href='/valider?id=$id'>Valider</a>"; ?>
-                        <?php echo "<a href='/annuler?id=$id'>Annuler</a>"; ?>
-
-                    </td>
+                    <th>ID Commande</th>
+                    <th>ID Produit</th>
+                    <th>Quantité</th>
+                    <th>Statut</th>
+                    <th>Actions</th>
                 </tr>
-            <?php endforeach ?>
-            
-        </tbody>
-    </table>
-    
+            </thead>
+            <tbody>
+                <?php foreach($all as $c) :?>
+                    <?php $id = $c['id']; ?>
+                    <tr>
+                        <td><strong>#<?= htmlspecialchars($c['id']) ?></strong></td>
+                        <td><?= htmlspecialchars($c['produit_id']) ?></td>
+                        <td><?= htmlspecialchars($c['quantite']) ?></td>
+                        <td><?= htmlspecialchars($c['statut']) ?></td>
+                        <td>
+                            <a href='/valider?id=<?= $id ?>' class="btn-action btn-valider">Valider</a>
+                            <a href='/annuler?id=<?= $id ?>' class="btn-action btn-annuler">Annuler</a>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>

@@ -20,15 +20,10 @@ class Router
 
         $params = [];
         if(count($pathExplode)>=2) {
-            // $param = explode("?",$uri)[1];
-            // $valueId = explode("=",$param)[1];
-            // $nameParam = explode("=",$param)[0];
-            // $params = [$nameParam,$valueId];
-            // var_dump($params);
 
             $queryString = $pathExplode[1];
             parse_str($queryString, $params);
-            
+
         }
 
         $action = $this->routes[$path] ?? null;
