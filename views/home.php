@@ -19,14 +19,16 @@
                 📋 Liste des commandes
             </a>
             <!-- Futurs ajouts -->
-            <a href="#" class="card-link disabled" title="Prochainement">
+            <a href="/addProduits" class="card-link" title="Prochainement">
                 ➕ Créer un produit
             </a>
-            <a href="#" class="card-link disabled" title="Prochainement">
+            <a href="/addCommand" class="card-link" title="Prochainement">
                 🛒 Passer une commande
             </a>
         </div>
     </div>
+     
+
 </body>
 </html>
 

@@ -135,3 +135,11 @@
 [2026-11-04 22:05:26] Evenement : commande.annulee | Commande: #4 | Produit: #2
 [2026-11-04 22:07:15] Evenement : commande.annulee | Commande: #2 | Produit: #1
 [2026-11-04 22:07:16] Evenement : commande.annulee | Commande: #1 | Produit: #1
+[2026-11-05 18:26:57] Evenement : commande.validee | Commande: #1 | Produit: #1
+[2026-11-05 18:26:58] Evenement : commande.validee | Commande: #2 | Produit: #1
+[2026-11-05 18:26:59] Evenement : commande.validee | Commande: #3 | Produit: #2
+[2026-11-05 18:27:00] Evenement : commande.validee | Commande: #4 | Produit: #2
+[2026-11-05 18:27:03] Evenement : commande.validee | Commande: #4 | Produit: #2
+[2026-11-05 18:27:18] Evenement : commande.annulee | Commande: #1 | Produit: #1
+[2026-11-05 18:27:20] Evenement : commande.annulee | Commande: #1 | Produit: #1
+[2026-11-07 23:09:54] Evenement : commande.annulee | Commande: #2 | Produit: #1

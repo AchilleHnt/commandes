@@ -67,4 +67,19 @@ class CommandeController
         $service->annuler($id);
         header("location:/commandes");
     }
+
+    public function addCommand()
+    {
+        $pdo = Database::getInstance()->pdo();
+        $cmdRepo = new CommandeRepo($pdo);
+        $produitRepo = new ProduitRepo($pdo);
+
+        $allProducts = $produitRepo->findAll();
+
+
+        if($_SERVER['REQUEST_METHOD']=== 'POST' && !empty($_POST)) {
+            $data = $_POST;
+        }
+        require BASE_VIEW_PATH."addCommand.php";
+    }
 }

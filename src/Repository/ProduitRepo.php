@@ -43,4 +43,16 @@ class ProduitRepo
         $statement = $this->pdo->prepare("UPDATE produits SET stock = stock + ? WHERE id = ?");
         $statement->execute([$qte,$id]);
     }
+
+   public function addProduits(array $produits): void 
+   {
+        $statement = $this->pdo->prepare(
+            "INSERT INTO produits (nom, stock, prix) VALUES (?, ?, ?)"
+        );
+        $statement->execute([
+            $produits['nom'],
+            $produits['stock'],
+            $produits['prix']
+        ]);
+    }   
 }

@@ -45,6 +45,8 @@ class CommandeService
 
         $this->notifier("commande.annulee",$commande);
     }
+
+    // public function addCommand()
 }
    
 

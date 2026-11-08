@@ -18,11 +18,14 @@ DIRECTORY_SEPARATOR);
 
 $r = new Router();
 $r->register('/',["CmdApi\Controller\HomeController","home"]);
-$r->register('/produits',["CmdApi\Controller\ProduitController","lister"]);
+$r->register('/favicon.ico',[]);
 
+$r->register('/produits',["CmdApi\Controller\ProduitController","lister"]);
+$r->register('/addProduits',["CmdApi\Controller\ProduitController","addProduits"]);
 $r->register('/commandes',["CmdApi\Controller\CommandeController","lister"]);
 $r->register('/valider',["CmdApi\Controller\CommandeController","valider"]);
 $r->register('/annuler',["CmdApi\Controller\CommandeController","annuler"]);
+$r->register('/addCommand',["CmdApi\Controller\CommandeController","addCommand"]);
 
 $uri = $_SERVER["REQUEST_URI"];
 $r->resolve($uri);
