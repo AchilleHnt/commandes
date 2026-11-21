@@ -46,7 +46,13 @@ class CommandeService
         $this->notifier("commande.annulee",$commande);
     }
 
-    // public function addCommand()
+    public function delete(int $cmdId): void
+    {
+        $commande = $this->commande->findById($cmdId);
+        $this->commande->deleteCommand($cmdId);
+
+        $this->notifier("commande.suprimee",$commande);
+    }
 }
    
 

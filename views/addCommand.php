@@ -15,7 +15,7 @@
         <form action="/addCommand" method="post">
 
               <label for="produits">Produit</label>
-                <select name="produits" id="">
+                <select name="produit_id" id="">
                 <?php 
                     foreach($allProducts as $s){
                         echo "<option value=". $s['id']. ">" .$s['nom']. "</option>";
@@ -23,8 +23,8 @@
                 ?>
             </select><br>
             
-            <label for="stock">Quantité</label>
-            <input name="stock" type="int"><br>
+            <label for="quantite">Quantité</label>
+            <input name="quantite" type="number"><br>
 
             <label for="statut">Statut</label>
             <select name="statut" id="">
@@ -42,12 +42,6 @@
            
             <button type="submit">Ajouter</button>
         </form>
-
-
-
-        <?php 
-        if($_SERVER['REQUEST_METHOD']=="POST")  var_dump($data);
-        ?>
     </div>
 </body>
 </html>

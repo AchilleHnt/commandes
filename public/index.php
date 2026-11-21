@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 use CmdApi\Database\Database;
 use CmdApi\Repository\CommandeRepo;
@@ -8,62 +8,30 @@ use CmdApi\Services\CommandeService;
 use CmdApi\Services\LogService;
 use CmdApi\Services\SmsService;
 
-
 require '../vendor/autoload.php';
 
+define('BASE_VIEW_PATH', dirname(__DIR__) . DIRECTORY_SEPARATOR . 'views'
+    . DIRECTORY_SEPARATOR);
 
+try {
+    $r = new Router();
+    $r->register('/', ['CmdApi\Controller\HomeController', 'home']);
+    $r->register('/favicon.ico', []);
 
-define('BASE_VIEW_PATH' , dirname(__DIR__). DIRECTORY_SEPARATOR. 'views'. 
-DIRECTORY_SEPARATOR);
+    $r->register('/produits', ['CmdApi\Controller\ProduitController', 'lister']);
+    $r->register('/addProduits', ['CmdApi\Controller\ProduitController', 'addProduits']);
+    $r->register('/commandes', ['CmdApi\Controller\CommandeController', 'lister']);
+    $r->register('/valider', ['CmdApi\Controller\CommandeController', 'valider']);
+    $r->register('/annuler', ['CmdApi\Controller\CommandeController', 'annuler']);
+    $r->register('/addCommand', ['CmdApi\Controller\CommandeController', 'addCommand']);
+    $r->register('/supprimer', ['CmdApi\Controller\commandeController','deleteCommand']);
 
-$r = new Router();
-$r->register('/',["CmdApi\Controller\HomeController","home"]);
-$r->register('/favicon.ico',[]);
+    $uri = $_SERVER['REQUEST_URI'];
+    $r->resolve($uri);
+} catch (\Throwable $th) {
+    http_response_code(500);
+    $message = $th->getMessage();
+    require __DIR__ . '/../views/error.php'; 
+    exit;
 
-$r->register('/produits',["CmdApi\Controller\ProduitController","lister"]);
-$r->register('/addProduits',["CmdApi\Controller\ProduitController","addProduits"]);
-$r->register('/commandes',["CmdApi\Controller\CommandeController","lister"]);
-$r->register('/valider',["CmdApi\Controller\CommandeController","valider"]);
-$r->register('/annuler',["CmdApi\Controller\CommandeController","annuler"]);
-$r->register('/addCommand',["CmdApi\Controller\CommandeController","addCommand"]);
-
-$uri = $_SERVER["REQUEST_URI"];
-$r->resolve($uri);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// echo ".\n Anullation Commande 2"."\n";
-// $service->annuler(2);
-// $res2 =  $produitRepo->findById(1);
-// echo "\n Produit restant ". $res->nom. " :" .$res->stock;
-
-
-// $service->valider(1);
-// var_dump($service);
-
-// $sms->surEvenement("commande.validee",['id'=> 12]);
+}

@@ -24,16 +24,20 @@
                 </tr>
             </thead>
             <tbody>
-                <?php foreach($all as $c) :?>
+                <?php 
+                foreach($all as $c) :?>
                     <?php $id = $c['id']; ?>
                     <tr>
                         <td><strong>#<?= htmlspecialchars($c['id']) ?></strong></td>
                         <td><?= htmlspecialchars($c['produit_id']) ?></td>
                         <td><?= htmlspecialchars($c['quantite']) ?></td>
                         <td><?= htmlspecialchars($c['statut']) ?></td>
+                        
                         <td>
                             <a href='/valider?id=<?= $id ?>' class="btn-action btn-valider">Valider</a>
                             <a href='/annuler?id=<?= $id ?>' class="btn-action btn-annuler">Annuler</a>
+                            <a href='/supprimer?id=<?= $id ?>' class="btn-action btn-supprimer">Supprimer</a>
+
                         </td>
                     </tr>
                 <?php endforeach; ?>

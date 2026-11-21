@@ -15,13 +15,13 @@ class CommandeRepo
     {
         return static::$pdo;
     }
-    public function findById(int $id): Commande
+    public function findById(int $id): Commande|array
     {
         $statement = $this->pdo->prepare("SELECT * FROM commandes WHERE id = ?");
         $statement->execute([$id]);
         $result = $statement->fetch();
 
-        if(!$result) return NULL;
+        if(!$result) return [];
 
         return new Commande(
             $result['id'],
@@ -37,7 +37,7 @@ class CommandeRepo
         $statement->execute();
         $result = $statement->fetchAll(\PDO::FETCH_ASSOC);
 
-        if(!$result) return NULL;
+        if(!$result) return [];
 
         return $result;
     }
@@ -53,5 +53,21 @@ class CommandeRepo
         $statement = $this->pdo->prepare("SELECT * FROM commandes WHERE statut = ?");
         $statement->execute([$statut->value]);
         $result = $statement->fetchAll();
+    }
+
+    public function addCommand(array $commande): void
+    {
+        $statement = $this->pdo->prepare("INSERT INTO commandes (produit_id,quantite,statut) VALUES (?, ?, ?)");
+        $statement->execute([
+            $commande['produit_id'],
+            $commande['quantite'],
+            $commande['statut']
+        ]);
+    }
+    
+    public function deleteCommand(int $id): void
+    {
+        $statement = $this->pdo->prepare("DELETE FROM commandes WHERE id = ?");
+        $statement->execute([$id]);
     }
 }

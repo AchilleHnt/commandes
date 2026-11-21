@@ -30,21 +30,22 @@ class ProduitController
 
         if ($_SERVER['REQUEST_METHOD'] === "POST" && !empty($_POST)) {
 
+            $nom = trim($_POST['nom']);
+            if($nom === '') throw new \Exception("Le nom doit pas être vide");
+            $stmt = $pdo->prepare("SELECT 1 FROM produits WHERE nom = ? LIMIT 1");
+            $stmt->execute([$nom]);
+
             $stock = filter_var($_POST['stock'], FILTER_VALIDATE_INT);
             if ($stock === false) throw new \Exception('Le stock doit être un entier');
 
             $prix = filter_var($_POST['prix'], FILTER_VALIDATE_INT);
             if($prix === false) throw new \Exception("Le prix doit être un entier");
 
-            $nom = trim($_POST['nom']);
-            $stmt = $pdo->prepare("SELECT 1 FROM produits WHERE nom = ? LIMIT 1");
-            $stmt->execute([$nom]);
 
             if ($stmt->fetch()) {
                 throw new \Exception("Ce produit existe déjà");
             }   
             $data = [
-                'id' => $id,
                 'nom' => $nom,
                 'stock' => $stock,
                 'prix' => $prix

@@ -18,19 +18,13 @@
             <input name="nom" type="text"><br>
             
             <label for="stock">Stock</label>
-            <input name="stock" type="int"><br>
+            <input name="stock" type="number"><br>
 
             <label for="prix">Prix</label>
-            <input name="prix" type="int"><br>
+            <input name="prix" type="number"><br>
 
             <button type="submit">Ajouter</button>
         </form>
-
-
-
-        <?php 
-        if($_SERVER['REQUEST_METHOD']=="POST")  var_dump($data);
-        ?>
     </div>
 </body>
 </html>
